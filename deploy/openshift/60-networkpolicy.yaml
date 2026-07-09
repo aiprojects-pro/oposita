@@ -63,9 +63,8 @@ spec:
     - Egress
   egress:
     - to:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: default
+        - ipBlock:
+            cidr: 172.30.0.1/32
       ports:
         - protocol: TCP
           port: 443
