@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Oposita con IA · Borrar mis datos</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="marca">
+      <img src="img/logo-oposita-con-ia-compacto.svg" alt="Oposita con IA" class="logo" />
+      <p class="marca-sub">Universidad Pablo de Olavide · Comité de Ética — Código 26/3-44</p>
+    </header>
+    <section class="card">
+      <p class="eyebrow">Estudio IA-OPOSDEP · Código UPO 26/3-44</p>
+      <h1>Borrar mis respuestas</h1>
+      <p>Si participaste en el cuestionario y quieres que eliminemos tus respuestas, introduce el
+        <strong>código personal</strong> que recibiste al finalizar (por ejemplo,
+        <code>OPOSDEP-XXXX-XXXX</code>).</p>
+      <p class="muted">El borrado es inmediato y no se puede deshacer. Como tus respuestas no contienen
+        ningún dato que te identifique, este código es la única forma de localizarlas.</p>
+
+      <form id="form-borrar">
+        <input type="text" id="codigo" placeholder="OPOSDEP-XXXX-XXXX" autocomplete="off"
+          autocapitalize="characters" spellcheck="false" required />
+        <button type="submit" class="btn-primary">Borrar mis respuestas</button>
+      </form>
+
+      <p id="msg" class="sorteo-msg hidden" role="alert"></p>
+
+      <p class="muted center">También puedes solicitarlo escribiendo a
+        <a href="mailto:rteva@upo.es">rteva@upo.es</a>.</p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('form-borrar').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('msg');
+      const codigo = document.getElementById('codigo').value.trim();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Borrando…';
+      msg.classList.add('hidden');
+      try {
+        const res = await fetch('/api/borrar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ codigo })
+        });
+        const json = await res.json();
+        if (!res.ok || !json.ok) throw new Error(json.error || 'No se pudo borrar.');
+        document.getElementById('form-borrar').classList.add('hidden');
+        msg.textContent = 'Hecho. Tus respuestas se han eliminado de forma permanente. Gracias por tu participación.';
+        msg.className = 'sorteo-msg ok';
+      } catch (err) {
+        msg.textContent = err.message;
+        msg.className = 'sorteo-msg error';
+        btn.disabled = false;
+        btn.textContent = 'Borrar mis respuestas';
+      }
+    });
+  </script>
+</body>
+</html>

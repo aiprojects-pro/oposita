@@ -1,0 +1,15 @@
+{
+  "name": "ia-oposdep",
+  "version": "1.0.0",
+  "description": "Cuestionario anónimo del estudio IA-OPOSDEP (UPO 26/3-44)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

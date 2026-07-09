@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Oposita con IA · Estudio IA-OPOSDEP</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Barra de progreso (fija arriba durante el cuestionario) -->
+  <div id="progreso" class="progreso hidden">
+    <div class="progreso-inner">
+      <div id="progreso-track" class="progreso-track" role="progressbar"
+        aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+        aria-label="Progreso del cuestionario">
+        <span id="progreso-fill" class="progreso-fill"></span>
+      </div>
+      <div class="progreso-texto">
+        <span id="progreso-label">Bloque 1 de 9</span>
+        <span id="progreso-pct">11%</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- Cabecera institucional -->
+    <header class="marca">
+      <img src="img/logo-oposita-con-ia-compacto.svg" alt="Oposita con IA" class="logo" />
+      <p class="marca-sub">Inteligencia artificial en la preparación de oposiciones del sector deportivo<br />
+        Universidad Pablo de Olavide · Comité de Ética — Código 26/3-44</p>
+    </header>
+
+    <!-- ============ CONSENTIMIENTO (Bloque 0) ============ -->
+    <section id="pantalla-consentimiento" class="card">
+      <p class="eyebrow">Estudio IA-OPOSDEP · Versión 1.1 · 09 de julio de 2026</p>
+      <h1>Información al participante y consentimiento informado</h1>
+
+      <div class="info-consent">
+        <h2>Título del estudio</h2>
+        <p>Percepción, uso y actitudes hacia la inteligencia artificial generativa en la preparación
+          de oposiciones del ámbito de la gestión deportiva en la administración pública.</p>
+
+        <h2>Investigadora principal</h2>
+        <p>María Rosario Teva Villén — Doctora en Ciencias de la Actividad Física y el Deporte —
+          Universidad Pablo de Olavide (UPO) / Universidad Internacional de La Rioja (UNIR) —
+          <a href="mailto:rteva@upo.es">rteva@upo.es</a></p>
+
+        <h2>1. Introducción</h2>
+        <p>Nos dirigimos a usted para invitarle a participar en un estudio científico de investigación
+          aprobado por el Comité de Ética de la Universidad Pablo de Olavide, con el código de referencia
+          26/3-44. Antes de decidir si desea participar, es importante que lea detenidamente esta
+          información. Si tiene cualquier duda, puede contactar con la investigadora principal mediante
+          el email indicado.</p>
+
+        <h2>2. Objetivo del estudio</h2>
+        <p>El objetivo es analizar cómo los opositores del ámbito de la gestión deportiva pública utilizan
+          herramientas de inteligencia artificial generativa (ChatGPT, Claude, Gemini, etc.) en su
+          preparación, así como identificar las necesidades formativas de este colectivo y las actitudes
+          hacia estas tecnologías.</p>
+
+        <div id="info-extra" class="hidden">
+          <h2>3. Procedimiento</h2>
+          <p>Si acepta participar, se le pedirá que cumplimente un cuestionario online de forma anónima. El
+            tiempo estimado es de 15 a 20 minutos. El cuestionario incluye preguntas sobre datos
+            sociodemográficos y académicos (rangos, sin datos identificativos), hábitos de preparación, uso y
+            percepción de la IA, actitudes hacia la IA, autorregulación del aprendizaje y necesidades
+            formativas.</p>
+
+          <h2>4. Voluntariedad e incentivo por participar</h2>
+          <p>Su participación es completamente voluntaria. Puede abandonar el cuestionario en cualquier momento
+            sin dar explicaciones y sin ninguna consecuencia. Como agradecimiento por el tiempo dedicado, al
+            finalizar podrá participar, de forma <strong>voluntaria y opcional</strong>, en el sorteo de un
+            <strong>cheque regalo de Amazon de 60 €</strong>. Para ello se le pedirá únicamente un correo
+            electrónico de contacto que se almacena <strong>por separado de sus respuestas y sin ninguna
+            conexión con ellas</strong>, se utiliza solo para avisar a la persona ganadora y
+            <strong>se elimina una vez realizado el sorteo</strong>. Entrar en el sorteo es independiente de
+            responder al cuestionario y no afecta al anonimato de sus respuestas.</p>
+
+          <h2>5. Riesgos y beneficios</h2>
+          <p>Este estudio no conlleva riesgos para su salud física o psicológica. El único inconveniente es el
+            tiempo dedicado (15-20 minutos). Más allá de la posibilidad de resultar agraciado en el sorteo, no
+            obtendrá beneficios directos, pero su contribución ayudará al avance del conocimiento científico
+            sobre el uso de la IA en la formación profesional.</p>
+
+          <h2>6. Confidencialidad y anonimato</h2>
+          <p>El cuestionario es anónimo. En sus respuestas <strong>no se recoge su nombre, email, DNI,
+            dirección IP ni ningún dato que permita identificarle</strong>. Los datos sociodemográficos se
+            recogen únicamente en categorías amplias (rangos de edad, comunidad autónoma, tipo de oposición)
+            que imposibilitan la reidentificación. El correo electrónico del sorteo, si decide facilitarlo, se
+            guarda en un archivo independiente que <strong>no puede vincularse con sus respuestas</strong>. Los
+            datos del cuestionario se analizarán y publicarán únicamente de forma agregada.</p>
+
+          <h2>7. Su código para borrar sus datos</h2>
+          <p>Al finalizar el cuestionario recibirá un <strong>código personal</strong> (por ejemplo,
+            <code>OPOSDEP-XXXX-XXXX</code>). Consérvelo: como sus respuestas no contienen ningún dato que le
+            identifique, ese código es la <strong>única forma</strong> de localizar y eliminar exactamente sus
+            respuestas si más adelante desea retirarlas. Podrá hacerlo usted mismo en la página de borrado de
+            la aplicación o escribiendo a la investigadora. El código no convierte sus respuestas en
+            identificables: solo permite eliminarlas a quien posee el código.</p>
+
+          <h2>8. Protección de datos (RGPD)</h2>
+          <p>Responsable del tratamiento: Universidad Pablo de Olavide (UPO), institución en cuyo Comité de
+            Ética para la Investigación con Seres Humanos se ha avalado el estudio (código 26/3-44);
+            investigadora responsable y punto de contacto: María Rosario Teva Villén (Universidad Pablo de
+            Olavide / Universidad Internacional de La Rioja).</p>
+          <p><strong>Finalidad:</strong> (a) investigación científica, a partir de las respuestas anónimas del
+            cuestionario; (b) gestión del sorteo del cheque regalo, a partir del correo electrónico facilitado
+            voluntariamente. <strong>Base legal:</strong> consentimiento explícito del interesado (art. 6.1.a y
+            art. 9.2.a del RGPD) e interés público en la investigación científica (art. 89 RGPD).
+            <strong>Conservación:</strong> las respuestas del cuestionario se conservan durante el tiempo
+            necesario para la investigación y su publicación; el correo del sorteo se elimina tras la
+            celebración del sorteo. <strong>Destinatarios:</strong> el equipo investigador; los resultados se
+            publican de forma agregada. <strong>Derechos:</strong> puede ejercer el borrado de sus respuestas
+            mediante su código personal (en la propia aplicación o contactando con la investigadora) y el
+            acceso o supresión del correo del sorteo escribiendo a la investigadora. Al analizarse los datos de
+            forma anónima y agregada, otros derechos pueden verse limitados una vez publicados los resultados.</p>
+        </div>
+
+        <button type="button" id="btn-mas" class="enlace-mas" aria-expanded="false"
+          aria-controls="info-extra">Ver información completa</button>
+      </div>
+
+      <label class="consent-box">
+        <input type="checkbox" id="consent-check" />
+        <span>He leído la información anterior y acepto participar voluntariamente en el estudio.</span>
+      </label>
+
+      <button id="btn-comenzar" class="btn-primary" disabled>Comenzar cuestionario</button>
+    </section>
+
+    <!-- ============ CUESTIONARIO (asistente por bloques) ============ -->
+    <section id="pantalla-cuestionario" class="card hidden">
+      <form id="form-cuestionario" novalidate>
+        <div id="bloques"></div>
+
+        <div id="errores" class="aviso hidden" role="alert"></div>
+
+        <div class="nav-pasos">
+          <button type="button" id="btn-anterior" class="btn-ghost hidden">Anterior</button>
+          <button type="button" id="btn-siguiente" class="btn-primary">Siguiente</button>
+          <button type="submit" id="btn-enviar" class="btn-primary hidden">Enviar respuestas</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ PANTALLA FINAL ============ -->
+    <section id="pantalla-gracias" class="card hidden">
+      <div class="check-icon" aria-hidden="true">✓</div>
+      <h1>¡Muchas gracias por participar!</h1>
+      <p>Tu respuesta se ha registrado correctamente de forma anónima. Tu colaboración contribuye al
+        avance del conocimiento científico sobre el uso de la IA en la preparación de oposiciones.</p>
+
+      <div class="panel-final">
+        <h2>Tu código para borrar tus datos</h2>
+        <p class="muted">Guárdalo en lugar seguro. Es la <strong>única</strong> forma de pedir que borremos
+          tus respuestas más adelante, porque no guardamos ningún dato que te identifique.</p>
+        <div class="codigo-box"><code id="codigo-borrado">—</code></div>
+        <div class="acciones">
+          <button type="button" id="btn-copiar" class="btn-ghost">Copiar código</button>
+          <button type="button" id="btn-descargar" class="btn-ghost">Descargar .txt</button>
+        </div>
+        <p class="muted">Para borrarlas cuando quieras: usa la <a href="/borrar.html">página de borrado</a>
+          o escribe a <a href="mailto:rteva@upo.es">rteva@upo.es</a>.</p>
+      </div>
+
+      <div class="panel-final" id="sorteo-box">
+        <h2>Sorteo de un cheque de 60 € de Amazon</h2>
+        <p class="muted">Opcional. Deja tu email <strong>solo si quieres entrar en el sorteo</strong>. Se
+          guarda por separado de tus respuestas, no puede vincularse con ellas y se elimina tras el sorteo.</p>
+        <form id="form-sorteo">
+          <input type="email" id="sorteo-email" placeholder="tu@email.com" autocomplete="email" inputmode="email" required />
+          <button type="submit" class="btn-primary">Entrar en el sorteo</button>
+        </form>
+        <p id="sorteo-msg" class="aviso hidden" role="alert"></p>
+      </div>
+
+      <p class="cierre">Estudio IA-OPOSDEP · Universidad Pablo de Olavide · Comité de Ética 26/3-44.<br />
+        Gracias por contribuir a la investigación.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

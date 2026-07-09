@@ -1,0 +1,365 @@
+/* ===========================================================================
+   IA-OPOSDEP · Capa visual (minimalista, sobria, identidad UPO)
+   Mobile-first. No cambia lógica, ítems ni persistencia.
+   =========================================================================== */
+:root {
+  --accent: #00693C;          /* verde institucional UPO */
+  --accent-strong: #00522f;
+  --accent-soft: #e9f2ec;
+  --bg: #fafafa;
+  --card: #ffffff;
+  --ink: #222222;
+  --muted: #5c5c5c;
+  --line: #e4e6e4;
+  --info-bg: #f5f5f5;
+  --info-ink: #555555;
+  --warn: #7a5a1e;            /* aviso sobrio (ámbar apagado), no rojo estridente */
+  --warn-bg: #fbf6ea;
+  --warn-line: #e7d9bb;
+  --radio: 12px;
+  --barra-h: 54px;
+  --lectura: 720px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: var(--lectura);
+  margin: 0 auto;
+  padding: 20px 16px 72px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  padding: 22px 18px;
+}
+
+.hidden { display: none !important; }
+.center { text-align: center; }
+.muted { color: var(--muted); font-size: 0.92rem; }
+
+h1, h2, h3 { font-family: Georgia, "Times New Roman", "Iowan Old Style", serif; }
+h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 16px; color: var(--ink); font-weight: 600; }
+h2 { font-size: 1.1rem; margin: 20px 0 6px; color: var(--ink); font-weight: 600; }
+h3 { font-size: 0.98rem; margin: 14px 0 8px; }
+p { margin: 0 0 12px; }
+a { color: var(--accent); }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.eyebrow {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+/* Foco visible accesible en todos los controles */
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, legend:focus-visible, .opcion:focus-within, .escala-opcion:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ---------- Cabecera institucional ---------- */
+.marca { text-align: center; padding: 8px 0 16px; }
+.logo { height: 56px; width: auto; margin: 0 auto 8px; display: block; }
+.marca-sub { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+/* ---------- Barra de progreso (fija arriba) ---------- */
+.progreso {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(250, 250, 250, 0.94);
+  backdrop-filter: saturate(1.1) blur(4px);
+  border-bottom: 1px solid var(--line);
+}
+.progreso-inner { max-width: var(--lectura); margin: 0 auto; padding: 9px 16px; }
+.progreso-track {
+  height: 6px;
+  background: var(--accent-soft);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progreso-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+.progreso-texto {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* ---------- Bloque informativo (consentimiento) ---------- */
+.info-consent {
+  background: var(--info-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  padding: 14px 16px 8px;
+  margin: 6px 0 18px;
+  font-size: 0.875rem;   /* ~14px: informa sin abrumar */
+  line-height: 1.55;
+  color: var(--info-ink);
+}
+.info-consent h2 { font-size: 0.95rem; margin: 14px 0 4px; color: #3f3f3f; }
+.info-consent h2:first-child { margin-top: 4px; }
+.info-consent a { color: var(--accent); }
+
+.enlace-mas {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-top: 4px;
+  text-decoration: underline;
+}
+
+/* ---------- Casilla de consentimiento ---------- */
+.consent-box {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  margin: 0 0 16px;
+  cursor: pointer;
+}
+.consent-box input { margin-top: 2px; width: 22px; height: 22px; flex: 0 0 auto; accent-color: var(--accent); }
+
+/* ---------- Botones ---------- */
+.btn-primary, .btn-ghost {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 14px 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+.btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+.btn-primary:hover:not(:disabled) { background: var(--accent-strong); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-ghost { background: #fff; color: var(--accent); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--accent); }
+
+/* ---------- Bloques y preguntas ---------- */
+.bloque { border: none; padding: 0; margin: 0; min-width: 0; }
+.bloque legend {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1.15rem;
+  padding: 0;
+  margin-bottom: 4px;
+}
+.bloque legend:focus { outline: none; }
+.bloque-desc { color: var(--muted); font-size: 0.9rem; margin: 0 0 10px; }
+
+.likert-leyenda {
+  position: sticky;
+  top: var(--barra-h);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 6px 0 8px;
+}
+
+.pregunta {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: calc(var(--barra-h) + 12px);
+}
+.pregunta:last-child { border-bottom: none; }
+.pregunta-label { margin: 0 0 12px; font-weight: 500; }
+.pregunta-label .num { color: var(--accent); font-weight: 700; margin-right: 4px; }
+
+/* Ítem obligatorio pendiente: aviso sobrio (ámbar), no rojo estridente */
+.pregunta.error {
+  background: var(--warn-bg);
+  border-left: 3px solid var(--warn);
+  border-bottom: none;
+  border-radius: 6px;
+  padding: 16px 14px;
+}
+
+/* ---------- Opciones (radio / checkbox) ---------- */
+.opciones { display: flex; flex-direction: column; gap: 8px; }
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fff;
+}
+.opcion:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.opcion input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--accent); }
+
+/* ---------- Escalas Likert / NPS ---------- */
+.escala-fila { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.nps-fila { grid-template-columns: repeat(6, 1fr); }
+.escala-opcion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink);
+  position: relative;
+  background: #fff;
+}
+.escala-opcion:has(input:checked) { border-color: var(--accent); background: var(--accent); color: #fff; }
+.escala-opcion input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.escala-num { pointer-events: none; }
+.escala-anclas { display: flex; justify-content: space-between; margin-top: 6px; font-size: 0.72rem; color: var(--muted); }
+
+/* ---------- Abiertas ---------- */
+.abierta {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  resize: vertical;
+}
+
+/* ---------- Avisos (sobrios) ---------- */
+.aviso {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 16px 0;
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+.aviso.ok { color: var(--accent-strong); background: var(--accent-soft); border-color: #bfe0cd; }
+
+/* ---------- Navegación del asistente ---------- */
+.nav-pasos { display: flex; gap: 12px; margin-top: 26px; }
+.nav-pasos .btn-ghost, .nav-pasos .btn-primary { flex: 1 1 auto; }
+
+/* ---------- Pantalla final ---------- */
+#pantalla-gracias { text-align: center; }
+#pantalla-gracias .panel-final { text-align: left; }
+.check-icon {
+  width: 58px; height: 58px;
+  margin: 4px auto 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex; align-items: center; justify-content: center;
+}
+.panel-final {
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  padding: 16px;
+  margin: 18px 0;
+  background: #fcfdfc;
+}
+.panel-final h2 { margin-top: 0; }
+.codigo-box {
+  background: var(--accent-soft);
+  border: 1px dashed var(--accent);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  margin: 10px 0;
+}
+.codigo-box code { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent-strong); word-break: break-all; }
+.acciones { display: flex; flex-direction: column; gap: 10px; margin: 10px 0; }
+.cierre { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+/* ---------- Formularios sueltos (login, sorteo, borrado) ---------- */
+#form-sorteo, #form-login, #form-borrar { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  font: inherit;
+}
+
+/* ---------- Panel de administración (sin cambios de estructura) ---------- */
+.panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.panel-head #btn-logout { width: auto; }
+.errores { color: var(--warn); background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 10px; padding: 12px 14px; margin: 12px 0; }
+.sorteo-msg { border-radius: 10px; padding: 12px 14px; margin-top: 10px; font-weight: 500; }
+.sorteo-msg.ok { color: var(--accent-strong); background: var(--accent-soft); }
+.sorteo-msg.error { color: var(--warn); background: var(--warn-bg); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0; }
+.stat { background: #fcfdfc; border: 1px solid var(--line); border-radius: var(--radio); padding: 14px; text-align: center; }
+.stat-num { display: block; font-size: 1.7rem; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.78rem; color: var(--muted); }
+.dist-item { margin-bottom: 16px; }
+.barra-fila { display: grid; grid-template-columns: 1fr; gap: 4px; margin-bottom: 8px; font-size: 0.82rem; }
+.barra-label { color: var(--ink); }
+.barra-track { background: var(--accent-soft); border-radius: 6px; height: 14px; overflow: hidden; }
+.barra-fill { display: block; height: 100%; background: var(--accent); border-radius: 6px; }
+.barra-val { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ===========================================================================
+   Pantallas grandes (≥ 640px)
+   =========================================================================== */
+@media (min-width: 640px) {
+  .wrap { padding: 28px 20px 80px; }
+  .card { padding: 30px 34px; }
+  h1 { font-size: 1.7rem; }
+  .marca { padding: 4px 0 20px; }
+
+  .btn-primary, .btn-ghost { width: auto; }
+  .nav-pasos .btn-ghost { flex: 0 0 auto; padding-left: 28px; padding-right: 28px; }
+  .nav-pasos .btn-primary { flex: 1 1 auto; }
+
+  #form-sorteo, #form-login, #form-borrar { flex-direction: row; }
+  #form-sorteo input, #form-login input, #form-borrar input { flex: 1 1 auto; }
+  #form-sorteo button, #form-login button, #form-borrar button { width: auto; }
+  .acciones { flex-direction: row; }
+  .acciones .btn-ghost { width: auto; }
+
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  .barra-fila { grid-template-columns: 240px 1fr 120px; align-items: center; gap: 10px; }
+  .barra-val { text-align: right; }
+  .barra-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}

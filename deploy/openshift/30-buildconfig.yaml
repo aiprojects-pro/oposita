@@ -1,0 +1,38 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: oposita
+  namespace: oposita
+  labels:
+    app.kubernetes.io/name: oposita
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: oposita
+  namespace: oposita
+  labels:
+    app.kubernetes.io/name: oposita
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: https://github.com/aiprojects-pro/oposita.git
+      ref: main
+    sourceSecret:
+      name: github-source
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: oposita:latest
+  triggers:
+    - type: GitHub
+      github:
+        secretReference:
+          name: github-webhook
+    - type: ConfigChange

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>IA-OPOSDEP · Panel de administración</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <!-- Login -->
+    <section id="login" class="card">
+      <p class="eyebrow">Estudio IA-OPOSDEP</p>
+      <h1>Panel de administración</h1>
+      <p>Introduce la contraseña de administración para consultar las respuestas.</p>
+      <form id="form-login">
+        <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password" required />
+        <button type="submit" class="btn-primary">Entrar</button>
+      </form>
+      <p id="login-error" class="errores hidden" role="alert"></p>
+    </section>
+
+    <!-- Panel -->
+    <section id="panel" class="card hidden">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Estudio IA-OPOSDEP · Panel</p>
+          <h1>Respuestas recogidas</h1>
+        </div>
+        <button id="btn-logout" class="btn-ghost">Salir</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-num" id="stat-total">–</span><span class="stat-label">Respuestas totales</span></div>
+        <div class="stat"><span class="stat-num" id="stat-rapidas">–</span><span class="stat-label">Marcadas como rápidas (&lt; 300 s)</span></div>
+        <div class="stat"><span class="stat-num" id="stat-sorteo">–</span><span class="stat-label">Participantes en el sorteo</span></div>
+        <div class="stat"><span class="stat-num" id="stat-ultima">–</span><span class="stat-label">Última respuesta</span></div>
+      </div>
+
+      <div class="acciones">
+        <button id="btn-export" class="btn-primary">Exportar respuestas (CSV)</button>
+        <button id="btn-export-sorteo" class="btn-ghost">Exportar emails del sorteo</button>
+        <button id="btn-refresh" class="btn-ghost">Actualizar</button>
+      </div>
+
+      <h2>Distribuciones (opción única)</h2>
+      <div id="distribuciones"></div>
+
+      <h2>Medias de las escalas Likert</h2>
+      <p class="muted">Los ítems marcados como (INV) están en crudo, sin recodificar.</p>
+      <div id="likert"></div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

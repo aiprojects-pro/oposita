@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: webhook-build-trigger
+  namespace: oposita
+rules:
+  - apiGroups:
+      - build.openshift.io
+    resources:
+      - buildconfigs/webhooks
+    verbs:
+      - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: webhook-build-trigger
+  namespace: oposita
+subjects:
+  - kind: ServiceAccount
+    name: builder
+    namespace: oposita
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: webhook-build-trigger

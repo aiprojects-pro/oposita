@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+data
+.env
+.git
+.gitignore
+.DS_Store
+.claude
+*.tar.gz
+*.log
+._*
+**/._*
+deploy/nginx-ia-oposdep.conf
+docker-compose.yml

@@ -1,0 +1,21 @@
+services:
+  ia-oposdep:
+    build: .
+    image: ia-oposdep:latest
+    container_name: ia-oposdep
+    restart: unless-stopped
+    environment:
+      # OBLIGATORIA: contraseña del panel de administración. Se define en .env
+      # (nunca en el código). Si falta, el arranque se detiene.
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en el archivo .env}
+      - PORT=3000
+    ports:
+      # Publica solo en localhost del servidor: se accede a través del proxy
+      # inverso (nginx/Traefik). Cambia a "3000:3000" si quieres exponerlo directo.
+      - "127.0.0.1:3000:3000"
+    volumes:
+      # Datos persistentes (respuestas + sorteo). ESTE es el volumen a respaldar.
+      - ia-oposdep-data:/app/data
+
+volumes:
+  ia-oposdep-data:
