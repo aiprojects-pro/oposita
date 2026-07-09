@@ -6,6 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/name: oposita
     app.kubernetes.io/component: web
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"oposita:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"app\")].image"}]
 spec:
   replicas: 1
   strategy:
